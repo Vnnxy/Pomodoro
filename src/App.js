@@ -1,11 +1,20 @@
 import './App.css';
 import React, { useState, useRef, useEffect } from "react";
+import SettingsMenu from './Components/SettingsMenu';
 
 const App = () =>{
+
+
   const Ref = useRef(null);
 
   const [timer, setTimer] = useState("00:00");
 
+  const [isPaused, changePaused] = useState(false);
+
+  var timeStamp = 20000; //default time
+
+
+  //Function that calculates de remaining time
   const getTimeDifference = (t) =>{
     const total = Date.parse(t)-Date.parse(new Date());
     const min= Math.floor((total / 1000 / 60) % 60);
@@ -17,6 +26,7 @@ const App = () =>{
   };
   };
 
+  //Sets the visible timer and updates it
   const startTimer = (t) =>{
     let {total, min, seconds} = getTimeDifference(t);
     if (total>=0){
@@ -26,13 +36,22 @@ const App = () =>{
     };
   };
 
+  //This starts the timer
   const clearTimer = (t) =>{
-    //setTimer("00:00:10");
     if (Ref.current) clearInterval(Ref.current);
     const id = setInterval(() => {
         startTimer(t);
     }, 1000);
     Ref.current = id;
+  }
+
+  const startPause = (t) =>{
+    const id= setInterval(() =>{
+      if(!isPaused){
+        startTimer(t);
+      }
+    }, 1000);
+    Ref.current=id;
   }
 
   const getDeadTime = (newTime) => {
@@ -53,29 +72,37 @@ const onClickReset = () => {
 
 
 const [minValue, setMinValue] = useState(0); // State to hold input value
-const [secValue, setSecValue] = useState(0); // State to hold input value
 
-const handleSecChange = (event) => {
-  setSecValue(parseInt(event.target.value)); // Update input value on change
-};
 
+//Sets the time 
 const handleMinChange = (event) =>{
   setMinValue(parseInt(event.target.value))
 }
 
-const handleTimeChange = () =>{
-  const totalTime = (minValue*60) + secValue;
-  clearTimer(getDeadTime(totalTime))
+
+const handleTimeChange = (event) =>{
+  setMinValue(parseInt(event.target.value))
+  console.log(minValue)
+  const totalTime = (minValue*60);
+  startPause(getDeadTime(totalTime))
+}
+
+const togglePause = () => {
+  changePaused(!isPaused);
+  console.log(isPaused)
 }
 
 return (
   <div
-      style={{ textAlign: "center", margin: "auto" }}>
+      style={{ textAlign: "center", margin: "auto" }} className='body'>
       <h2>{timer}</h2>
       <button onClick={onClickReset}>Reset</button>
+      <div>
       <input type='number'value={minValue} onChange={handleMinChange} placeholder='Minutes'/>
-      <input type='number'value={secValue} onChange={handleSecChange} placeholder='Seconds'/>
+      </div>
       <button onClick={handleTimeChange}>Set Time</button>
+      <button onClick={togglePause}>Pause/Resume</button>
+      <SettingsMenu/>
   </div>
 );
 
