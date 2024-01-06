@@ -1,8 +1,9 @@
+import { forwardRef } from 'react'
 import '../Styles/NavMenuStyles.css'
 
-const NavMenu = ({handleSettingsOpener}) =>{
+const NavMenu = forwardRef(({handleSettingsOpener}, ref) =>{
     return(
-    <div className="nav-container">
+    <div className="nav-container" ref={ref}>
         <nav>
             <a href="#settings-menu" onClick={handleSettingsOpener}>Settings</a>
             <a href="#">About</a>
@@ -11,7 +12,7 @@ const NavMenu = ({handleSettingsOpener}) =>{
     )
 
    
-}
+})
 
 
 export default NavMenu

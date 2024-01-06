@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useRef, useEffect } from "react";
 import SettingsMenu from './Components/SettingsMenu';
 import NavMenu from './Components/NavMenu'
+import useOnClickOutside from './Hooks/useOnClickOutside';
 
 const App = () =>{
 
@@ -113,13 +114,15 @@ const settingProps = {
   handleSettingsOpener: handleSettingsOpener
 }
 
+const ref1= useRef();
+const ref2= useRef();
 
-
+    useOnClickOutside(ref1, ref2, handleSettingsOpener);
 
 return (
   <div
       style={{ textAlign: "center", margin: "auto" }} className='body'>
-        <NavMenu handleSettingsOpener= {handleSettingsOpener}/>
+        <NavMenu handleSettingsOpener= {handleSettingsOpener} ref={ref2}/>
       <h2>{timer}</h2>
       
       <button onClick={onClickReset}>Reset</button>
@@ -128,7 +131,7 @@ return (
       </div>
       <button onClick={handleTimeChange}>Set Time</button>
       <button onClick={togglePause}>Pause/Resume</button>
-      <SettingsMenu {...settingProps}/>
+      <SettingsMenu {...settingProps} ref={ref1}/>
       
   </div>
 );
