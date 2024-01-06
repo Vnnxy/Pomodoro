@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState, useRef, useEffect } from "react";
 import SettingsMenu from './Components/SettingsMenu';
+import NavMenu from './Components/NavMenu'
 
 const App = () =>{
 
@@ -92,17 +93,26 @@ const togglePause = () => {
   console.log(isPaused)
 }
 
+const [settingsOpen, toogleSettingsOpen] = useState(false);
+
+const handleSettingsOpener = ()  =>{
+  toogleSettingsOpen(!settingsOpen);
+}
+
 return (
   <div
       style={{ textAlign: "center", margin: "auto" }} className='body'>
+        <NavMenu handleSettingsOpener= {handleSettingsOpener}/>
       <h2>{timer}</h2>
+      
       <button onClick={onClickReset}>Reset</button>
       <div>
       <input type='number'value={minValue} onChange={handleMinChange} placeholder='Minutes'/>
       </div>
       <button onClick={handleTimeChange}>Set Time</button>
       <button onClick={togglePause}>Pause/Resume</button>
-      <SettingsMenu/>
+      <SettingsMenu settingsOpen={settingsOpen}/>
+      
   </div>
 );
 

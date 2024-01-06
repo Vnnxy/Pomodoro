@@ -1,0 +1,19 @@
+.nav-container{
+    overflow: hidden;
+    background-color: #b4c6bf;
+}
+
+.nav-container a{
+    float: right;
+    color: black ;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+
+
+nav{
+    margin-bottom: 0!important;
+}

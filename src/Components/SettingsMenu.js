@@ -1,16 +1,19 @@
 import {useState} from 'react';
 import '../Styles/SettingsMenuStyles.css'
 
-const SettingsMenu =() =>{
+const SettingsMenu =({settingsOpen}) =>{
+    if (!settingsOpen) {
+        return null; // Render nothing if settingsOpen is false
+    }
     return(
-        <div className='settings-menu'>
-            
+        <div className='settings-menu' id='settings-menu'>
             <div>
                 <h1 className='title-menu'>Settings</h1>
             </div>
             <hr/>
             <TimeMenu/>
         </div>
+        
     )
 }
 
