@@ -6,7 +6,7 @@ import NavMenu from './Components/NavMenu'
 const App = () =>{
 
 
-  const Ref = useRef(null);
+  const Ref = useRef();
 
   const [timer, setTimer] = useState("00:00");
 
@@ -95,9 +95,26 @@ const togglePause = () => {
 
 const [settingsOpen, toogleSettingsOpen] = useState(false);
 
+const [workMinutes, setWorkMinutes] = useState(25); //We define the default state of the timer.
+const [breakMinutes, setBreakMinutes] = useState(10); //We define the default state of the break time.
+
 const handleSettingsOpener = ()  =>{
   toogleSettingsOpen(!settingsOpen);
+  console.log("tara")
 }
+
+
+const settingProps = {
+  settingsOpen:settingsOpen,
+  workMinutes : workMinutes,
+  setWorkMinutes : setWorkMinutes,
+  breakMinutes : breakMinutes,
+  setBreakMinutes: setBreakMinutes,
+  handleSettingsOpener: handleSettingsOpener
+}
+
+
+
 
 return (
   <div
@@ -111,7 +128,7 @@ return (
       </div>
       <button onClick={handleTimeChange}>Set Time</button>
       <button onClick={togglePause}>Pause/Resume</button>
-      <SettingsMenu settingsOpen={settingsOpen}/>
+      <SettingsMenu {...settingProps}/>
       
   </div>
 );

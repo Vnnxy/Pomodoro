@@ -1,28 +1,58 @@
-import {useState} from 'react';
+import {useRef, useState, useEffect} from 'react';
 import '../Styles/SettingsMenuStyles.css'
 
-const SettingsMenu =({settingsOpen}) =>{
+const SettingsMenu =({settingsOpen, workMinutes, setWorkMinutes, breakMinutes, setBreakMinutes, handleSettingsOpener}) =>{
+
+    const ref= useRef();
+
+    useOnClickOutside(ref, handleSettingsOpener);
+
     if (!settingsOpen) {
         return null; // Render nothing if settingsOpen is false
     }
     return(
-        <div className='settings-menu' id='settings-menu'>
+        <div className='settings-menu' id='settings-menu' ref={ref}>
             <div>
                 <h1 className='title-menu'>Settings</h1>
             </div>
             <hr/>
-            <TimeMenu/>
+            <TimeMenu workMinutes={workMinutes} setWorkMinutes={setWorkMinutes} breakMinutes={breakMinutes} setBreakMinutes={setBreakMinutes}/>
         </div>
         
     )
 }
 
+// Hook
+function useOnClickOutside(ref, handler) {
+    useEffect(
+      () => {
+        const listener = (event) => {
+          // Do nothing if clicking ref's element or descendent elements
+          if (!ref.current || ref.current.contains(event.target)) {
+            return;
+          }
+          handler(event);
+        };
+        document.addEventListener("mousedown", listener);
+        document.addEventListener("touchstart", listener);
+        return () => {
+          document.removeEventListener("mousedown", listener);
+          document.removeEventListener("touchstart", listener);
+        };
+      },
+      // Add ref and handler to effect dependencies
+      // It's worth noting that because passed in handler is a new ...
+      // ... function on every render that will cause this effect ...
+      // ... callback/cleanup to run every render. It's not a big deal ...
+      // ... but to optimize you can wrap handler in useCallback before ...
+      // ... passing it into this hook.
+      [ref, handler]
+    );
+  }
+
 //Menu containing the Time settings menu
-const TimeMenu = () =>{
-    const [workMinutes, setWorkMinutes] = useState(25); //We define the default state of the timer.
-    const [breakMinutes, setBreakMinutes] = useState(10); //We define the default state of the break time.
-
-
+const TimeMenu = ({workMinutes, setWorkMinutes, breakMinutes, setBreakMinutes}) =>{
+    
     function handleWorkMinChange(event){
     setWorkMinutes(event.target.value);
     event.preventDefault()
