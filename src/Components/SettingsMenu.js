@@ -1,6 +1,5 @@
-import {useRef, useState, useEffect, forwardRef} from 'react';
+import {forwardRef} from 'react';
 import '../Styles/SettingsMenuStyles.css'
-import useOnClickOutside from '../Hooks/useOnClickOutside';
 
 const SettingsMenu = forwardRef(({settingsOpen, workMinutes, setWorkMinutes, breakMinutes, setBreakMinutes, handleSettingsOpener},ref) =>{
     if (!settingsOpen) {
