@@ -30,11 +30,8 @@ const handleSettingsOpener = ()  =>{
 
 
 const changeMode = (event) =>{
-  
   setMode(event.target.value);
   setCurrentTime(modesData[event.target.value])
-  console.log(currentMode)
-  console.log(currentTime)
 }
 
 const settingProps = {
@@ -45,7 +42,12 @@ const settingProps = {
   setBreakMinutes: setBreakMinutes,
   handleSettingsOpener: handleSettingsOpener
 }
+
 useOnClickOutside(ref1, ref2, handleSettingsOpener);
+
+useEffect(() =>{
+  setCurrentTime(modesData[currentMode]) 
+}, [breakMinutes, workMinutes])
 
 return (
   <div className='body'>

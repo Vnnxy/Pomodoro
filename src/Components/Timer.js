@@ -1,39 +1,51 @@
-import {useRef, useState } from "react";
+import {useRef, useState, useEffect } from "react";
 
 import '../Styles/TimerStyles.css'
 
 const Timer = ({min, mode}) =>{
     var minutes = min;
-
-    const timeRef = useRef();
-    timeRef.current= min;
-    const[time, setTime] = useState(":00");
+    const[time, setTime] = useState(minutes+":00");
     const [hasStarted, setStart] = useState(false);
     const [isPaused, setPause] =useState(false);
     const PAUSE = 'Pause';
     const RESUME ='Resume';
     const START = 'Start';
+    
+    var timeoutId;
 
     const [currentButtonState, setCurrentButtonState]= useState(START);
 
     const pauseRef = useRef();
     pauseRef.current= isPaused;
 
+    var seconds =60;
+
+    useEffect(()=>{
+        setTime(min+":"+ (seconds < 10 ? "0" : seconds ===60? "00" : ""))
+        if(pauseRef.current===false && hasStarted)
+            countdown(min)
+        return () => {
+            clearTimeout(timeoutId)
+            };
+    }, [min])
+
+    
+
     function countdown (minutes){
-        var seconds =60;
-        var time;
+        
+        var reftime;
         
         function tick(){
             var current_minutes = minutes-1;
             if(pauseRef.current=== false)
                 seconds--;
-            time= setTime(current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds));
+            reftime= setTime(current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds));
 
                 if( seconds > 0) {
-                    setTimeout(tick, 1000);
+                    timeoutId=setTimeout(tick, 1000);
             } else {
                 if(minutes > 1){
-                    countdown(minutes-1)             
+                    countdown(minutes-1, seconds)             
                 }
             }
         }   

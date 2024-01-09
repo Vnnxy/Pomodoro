@@ -1,34 +1,47 @@
 import {forwardRef} from 'react';
 import '../Styles/SettingsMenuStyles.css'
+import useOnClickOutside from '../Hooks/useOnClickOutside';
 
-const SettingsMenu = forwardRef(({settingsOpen, workMinutes, setWorkMinutes, breakMinutes, setBreakMinutes, handleSettingsOpener},ref) =>{
+const SettingsMenu = forwardRef(({settingsOpen, workMinutes, setWorkMinutes, breakMinutes, setBreakMinutes},ref) =>{
+
+    var focusMin = workMinutes;
+    var breakMin = breakMinutes;
+
+    function handleWorkMinChange(event){
+        focusMin=(event.target.value);
+        event.preventDefault()
+    }
+        function handleBreakMinChange(event){
+        breakMin=(event.target.value);
+        event.preventDefault()
+    }
+
+    
+
+    const handleExitSettings = () =>{
+        setBreakMinutes(breakMin);
+        setWorkMinutes(focusMin);
+    }
+    useOnClickOutside(ref,ref, handleExitSettings)
     if (!settingsOpen) {
         return null; // Render nothing if settingsOpen is false
     }
+    
     return(
         <div className='settings-menu' id='settings-menu' ref={ref}>
             <div>
                 <h1 className='title-menu'>Settings</h1>
             </div>
             <hr/>
-            <TimeMenu workMinutes={workMinutes} setWorkMinutes={setWorkMinutes} breakMinutes={breakMinutes} setBreakMinutes={setBreakMinutes}/>
+            <TimeMenu workMinutes={workMinutes} breakMinutes={breakMinutes} handleBreakMinChange={handleBreakMinChange} handleWorkMinChange={handleWorkMinChange}/>
         </div>
         
     )
 })
 
 //Menu containing the Time settings menu
-const TimeMenu = ({workMinutes, setWorkMinutes, breakMinutes, setBreakMinutes}) =>{
+const TimeMenu = ({workMinutes, breakMinutes, handleBreakMinChange, handleWorkMinChange}) =>{
     
-    function handleWorkMinChange(event){
-    setWorkMinutes(event.target.value);
-    event.preventDefault()
-}
-    function handleBreakMinChange(event){
-    setBreakMinutes(event.target.value);
-    event.preventDefault()
-}
-
     return (
         <div className='sub-menu'>
             <div>
@@ -37,14 +50,14 @@ const TimeMenu = ({workMinutes, setWorkMinutes, breakMinutes, setBreakMinutes}) 
             <div className='sub-menu-section'>
                 <h2>Focus Time:</h2>
                 <span>
-                    <input type='number'value={workMinutes} onChange={handleWorkMinChange} placeholder='Focus mode duration' className='balloon' min='1'/>
+                    <input type='number'defaultValue={workMinutes} onChange={handleWorkMinChange} placeholder='Focus mode duration' className='balloon' min='1'/>
                     <label for="Minutes">Minutes</label>
                 </span>
             </div>
             <div className='sub-menu-section'>
                 <h2>Break Time:</h2>
                 <span>
-                    <input type='number'value={breakMinutes} onChange={handleBreakMinChange} placeholder='Break mode duration' className='balloon' min='1'/>
+                    <input type='number'defaultValue={breakMinutes} onChange={handleBreakMinChange} placeholder='Break mode duration' className='balloon' min='1'/>
                     <label for="Minutes">Minutes</label>
                 </span>
             </div>
