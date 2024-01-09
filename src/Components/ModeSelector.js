@@ -1,18 +1,12 @@
 
 
-const ModeSelector = ({modesData, changeMode}) =>{
-
+const ModeSelector = ({changeMode}) =>{
     return(
         <div className="mode-wrapper">
-            {Object.keys(modesData).map(key=>
-                <>
-                <label for={`input-${key}`} id={`label-${key}`} >{key}</label>
-                <input value={key}type="radio" name="choice-radio" id={`input-${key}`} onChange={changeMode}/>
-                &nbsp; &nbsp;
-                </>
-            )
-           
-            }
+            <label for="input-focus" id="label-focus">Focus</label>
+            <input value="FOCUS" id="input-focus"type="radio" name="choice-radio" onChange={changeMode}/>
+            <label for="input-break" id="label-break">Break</label>
+            <input value="BREAK" id="input-break"type="radio" name="choice-radio" onChange={changeMode}/>
             <div className='toggle'></div>
         </div>
     )

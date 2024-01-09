@@ -22,8 +22,9 @@ const Timer = ({min, mode}) =>{
 
     useEffect(()=>{
         setTime(min+":"+ (seconds < 10 ? "0" : seconds ===60? "00" : ""))
-        if(pauseRef.current===false && hasStarted)
-            countdown(min)
+        if(pauseRef.current===false && hasStarted){
+            countdown(min, seconds)
+        }
         return () => {
             clearTimeout(timeoutId)
             };
@@ -31,21 +32,21 @@ const Timer = ({min, mode}) =>{
 
     
 
-    function countdown (minutes){
-        
+    function countdown (minutes, sec){                  
         var reftime;
         
         function tick(){
             var current_minutes = minutes-1;
             if(pauseRef.current=== false)
-                seconds--;
-            reftime= setTime(current_minutes.toString() + ":" + (seconds < 10 ? "0" : "") + String(seconds));
+                seconds= sec--;
+            
+            reftime= setTime(current_minutes.toString() + ":" + (sec < 10 ? "0" : "") + String(sec));
 
-                if( seconds > 0) {
+                if( sec > 0) {
                     timeoutId=setTimeout(tick, 1000);
             } else {
                 if(minutes > 1){
-                    countdown(minutes-1, seconds)             
+                    countdown(minutes-1, sec)             
                 }
             }
         }   
@@ -56,7 +57,7 @@ const Timer = ({min, mode}) =>{
         
         //This blocks the button so it can't restart the timer
         if(!hasStarted){
-            countdown(min);
+            countdown(min, seconds);
             setStart(true);
             setCurrentButtonState(PAUSE);
         }

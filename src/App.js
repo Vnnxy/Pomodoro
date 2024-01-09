@@ -13,15 +13,15 @@ const [workMinutes, setWorkMinutes] = useState(25); //We define the default stat
 const [breakMinutes, setBreakMinutes] = useState(10); //We define the default state of the break time.
 const ref1= useRef();
 const ref2= useRef();
-const BREAK_MODE='BREAK_MODE';
-const FOCUS_MODE='FOCUS_MODE';
+const BREAK='BREAK';
+const FOCUS='FOCUS';
 
 const modesData ={
-  BREAK_MODE : breakMinutes,
-  FOCUS_MODE : workMinutes
+  BREAK : breakMinutes,
+  FOCUS : workMinutes
 } 
 
-const [currentMode, setMode] = useState(FOCUS_MODE); //default mode
+const [currentMode, setMode] = useState(FOCUS); //default mode
 const [currentTime, setCurrentTime] = useState(workMinutes);
 
 const handleSettingsOpener = ()  =>{
@@ -53,7 +53,7 @@ return (
   <div className='body'>
       <NavMenu handleSettingsOpener= {handleSettingsOpener} ref={ref2}/>
       <SettingsMenu {...settingProps} ref={ref1}/>
-      <ModeSelector modesData={modesData} changeMode={changeMode}/>
+      <ModeSelector changeMode={changeMode}/>
       <Timer min={currentTime} mode={currentMode}/>
   </div>
 );
