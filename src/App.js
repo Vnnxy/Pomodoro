@@ -31,7 +31,6 @@ const handleSettingsOpener = ()  =>{
 
 const changeMode = (event) =>{
   setMode(event.target.value);
-  setCurrentTime(modesData[event.target.value])
 }
 
 const settingProps = {
@@ -49,12 +48,18 @@ useEffect(() =>{
   setCurrentTime(modesData[currentMode]) 
 }, [breakMinutes, workMinutes])
 
+
+
+useEffect(()=>{
+  setCurrentTime(modesData[currentMode])
+},[currentMode])
+
 return (
   <div className='body'>
       <NavMenu handleSettingsOpener= {handleSettingsOpener} ref={ref2}/>
       <SettingsMenu {...settingProps} ref={ref1}/>
       <ModeSelector changeMode={changeMode}/>
-      <Timer min={currentTime} mode={currentMode}/>
+      <Timer min={currentTime} mode={currentMode} setMode={setMode}/>
   </div>
 );
 
