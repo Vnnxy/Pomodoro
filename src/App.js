@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState, useRef, useEffect } from "react";
+import { Helmet } from 'react-helmet';
 import SettingsMenu from './Components/SettingsMenu';
 import NavMenu from './Components/NavMenu'
 import useOnClickOutside from './Hooks/useOnClickOutside';
@@ -56,10 +57,11 @@ useEffect(()=>{
 
 return (
   <div className='body'>
+      <Helmet><script src="https://kit.fontawesome.com/db4a58874e.js" crossorigin="anonymous"></script></Helmet>
       <NavMenu handleSettingsOpener= {handleSettingsOpener} ref={ref2}/>
       <SettingsMenu {...settingProps} ref={ref1}/>
-      <ModeSelector changeMode={changeMode}/>
-      <Timer min={currentTime} mode={currentMode} setMode={setMode}/>
+      
+      <Timer min={currentTime} mode={currentMode} setMode={setMode} changeMode={changeMode}/>
   </div>
 );
 

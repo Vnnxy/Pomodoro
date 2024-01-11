@@ -1,11 +1,14 @@
 .nav-container{
     display:flex;
     overflow: hidden;
-    background-color: #b4c6bf;
+    background-color: #4B6A89;
     height: 80px;
     justify-content: space-between;
     align-items: center;
-    
+    width: 100%;
+    position: sticky;
+    top:0;
+    z-index: 1000;
 }
 
 .nav-container nav{
@@ -14,15 +17,41 @@
 
 .nav-container a{
     float: right;
-    color: black ;
+    color:  #7BD6CB;
     text-align: center;
     padding: 24px 46px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 19px;
+    font-weight: 900;
+    transition: .5s;
 }
 
+.nav-container a:hover::before{
+    transform: scale(1.1);
+  box-shadow: 0 0 15px whitesmoke;
+}
 
+.nav-container a:hover{
+    color: whitesmoke;
+  box-shadow: 0 0 5px whitesmoke;
+  text-shadow: 0 0 5px whitesmoke;
+}
+
+@keyframes ripple {
+	/*scale the element to 250% to safely cover the entire link and fade it out*/
+	100% {
+    	opacity: 0;
+    	transform: scale(2.5); 
+    }
+}
 
 nav{
     margin-bottom: 0!important;
 }
+
+.logo{
+    padding: auto;
+    margin-left: 20px;
+    color: #7BD6CB;
+}
+

@@ -1,8 +1,9 @@
 import {useRef, useState, useEffect } from "react";
+import ModeSelector from "./ModeSelector";
 
 import '../Styles/TimerStyles.css'
 
-const Timer = ({min, mode,setMode}) =>{
+const Timer = ({min, mode,setMode, changeMode}) =>{
     //The minutes that will change.
     var minutes = min;
     //The time that is displayed in the Timer
@@ -136,12 +137,12 @@ const Timer = ({min, mode,setMode}) =>{
     return(
         <div className="main-container">
             <div className="mode-cont">
-                <h1>{mode}</h1>
+                <ModeSelector changeMode={changeMode}/>
             </div>
             <div className="timer-container">
                 <div className="timestamp-cont">{time}</div>
                 <button className="start-pause-button" onClick={handlePauseResume}>{currentButtonState}</button> 
-                <button className="reset-button" onClick={reset}>Reset</button> 
+                
             </div>
         </div>
     )

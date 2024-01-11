@@ -1,52 +1,71 @@
-
+/* This radio-button style is from https://codepen.io/gabrielferreira/pen/oYxNVy. made by Gabriel Ferreira*/
 .mode-wrapper{
-    position: relative;
-    height: 26px;
-    width: 120px;
-    margin: 20px auto;
-    background: rgba(0, 0, 0, 0.25);
-    border-radius: 3px;
-    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-}
-
-.mode-wrapper input{
-    position: absolute !important;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  width: 1px;
-  border: 0;
-  overflow: hidden;
-}
-
-.mode-wrapper label{
-    background-color: #e4e4e4;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 14px;
-  line-height: 1;
   text-align: center;
-  padding: 8px 16px;
-  margin-right: -1px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
-  transition: all 0.1s ease-in-out;
+  margin-top: 60px;
 }
 
+.mode-wrapper input[type="radio"]{
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
 
-.mode-wrapper label:hover {
-    cursor: pointer;
-  }
+.mode-wrapper input:checked + .box {
+  background-color: #7BD6CB;
+}
 
-.mode-wrapper input:checked + label {
-    background-color: #a5dc86;
-    box-shadow: none;
-  }
+.mode-wrapper input:checked + .box span {
+  color: #4B6A89;
+  transform: translateY(-8px);
+}
 
-  .mode-wrapper  label:first-of-type {
-    border-radius: 4px 0 0 4px;
-  }
+.mode-wrapper input:checked + .box span:before {
+  transform: translateY(-4px);
+  opacity: 1;
+}
 
-  .mode-wrapper label:last-of-type {
-    border-radius: 0 4px 4px 0;
-  }
+.box{
+  width: 200px;
+  height: 100px;
+  background-color: #4B6A89;
+  transition: all 250ms ease;
+  will-change: transition;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  font-weight: 900;
+  border: 2px solid #7BD6CB;
+}
 
+.box:active{
+  transform: translateY(5px);
+}
+.box span{
+  position: absolute;
+  transform: translate(0, -24px);
+  left: 0;
+  right: 0;
+  transition: all 300ms ease;
+  font-size: 1.5em;
+  user-select: none;
+  color: #7BD6CB;
+}
+.box span:before{
+  font-size: 1.2em;
+  display: block;
+  transform: translateY(-40px);
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+  font-weight: normal;
+  color: #4B6A89;
+  font-family: FontAwesome;
+}
+
+.focus span:before{
+  content: "\f6a7";
+}
+
+.break > span::before{
+  content: "\f7b6"
+}
