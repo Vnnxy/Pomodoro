@@ -1,6 +1,7 @@
 import {forwardRef} from 'react';
 import '../Styles/SettingsMenuStyles.css'
 import useOnClickOutside from '../Hooks/useOnClickOutside';
+import TimeMenu from './TimeMenu';
 
 const SettingsMenu = forwardRef(({settingsOpen, workMinutes, setWorkMinutes, breakMinutes, setBreakMinutes},ref) =>{
 
@@ -29,41 +30,45 @@ const SettingsMenu = forwardRef(({settingsOpen, workMinutes, setWorkMinutes, bre
     
     return(
         <div className='settings-menu' id='settings-menu' ref={ref}>
-            <div>
-                <h1 className='title-menu'>Settings</h1>
+            <div className='options'>
+            
+            <nav className='navbar'>
+                <ul className='navbar-nav'>
+                    <li className='nav-item'>
+                        <a className='nav-ref'>
+                            <i class="fa-solid fa-user"></i>
+                            <span className='text-ref'>Profile</span>
+                        </a>
+                    </li>
+                    <li className='nav-item'>
+                        <a href="#time-men"className='nav-ref'>
+                            <i class="fa-solid fa-gear"></i>
+                            <span className='text-ref'>Timer Settings</span>
+                        </a>
+                    </li>
+                    <li className='nav-item'>
+                        <a className='nav-ref'>
+                            <i class="fa-solid fa-sliders"></i>
+                            <span className='text-ref'>Preferences</span>
+                        </a>
+                    </li>
+                    <li className='nav-item'>
+                        <a className='nav-ref'>
+                            <i class="fa-solid fa-clipboard"></i>
+                            <span className='text-ref'>Insights</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </nav>
+    
             </div>
-            <hr/>
-            <TimeMenu workMinutes={workMinutes} breakMinutes={breakMinutes} handleBreakMinChange={handleBreakMinChange} handleWorkMinChange={handleWorkMinChange}/>
+            <TimeMenu id="time-men" workMinutes={workMinutes} breakMinutes={breakMinutes} handleBreakMinChange={handleBreakMinChange} handleWorkMinChange={handleWorkMinChange}/>
         </div>
         
     )
 })
 
-//Menu containing the Time settings menu
-const TimeMenu = ({workMinutes, breakMinutes, handleBreakMinChange, handleWorkMinChange}) =>{
-    
-    return (
-        <div className='sub-menu'>
-            <div>
-                <h1 className='title-submenu'>Time:</h1>
-            </div>
-            <div className='sub-menu-section'>
-                <h2>Focus:</h2>
-                <span>
-                    <input type='number'defaultValue={workMinutes} onChange={handleWorkMinChange} placeholder='Focus mode duration' className='balloon' min='1'/>
-                    <label for="Minutes">Minutes</label>
-                </span>
-            </div>
-            <div className='sub-menu-section'>
-                <h2>Break:</h2>
-                <span>
-                    <input type='number'defaultValue={breakMinutes} onChange={handleBreakMinChange} placeholder='Break mode duration' className='balloon' min='1'/>
-                    <label for="Minutes">Minutes</label>
-                </span>
-            </div>
-        </div>
-    )
-}
 
 
 export default SettingsMenu;
