@@ -5,8 +5,8 @@
     min-height: 500px;
     background-color: #4B6A89;
     flex-direction: column;
-    border: 2px solid #382A3E; /* Border width and color */
-    border-radius: 10px; /* Adjust the value to control the roundness of the corners */
+    border: 2px solid #4B6A89; /* Border width and color */
+    border-radius: 70px; /* Adjust the value to control the roundness of the corners */
     position: relative;
     margin: auto;
     margin-top: 60px;
@@ -40,7 +40,7 @@
     cursor: pointer;
     font-size: 20px;
     font-weight: 700;
-    border-radius: 8px;
+    border-radius: 15px;
     padding: 13px 23px;
     border: 0;
     transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;

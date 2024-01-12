@@ -1,48 +1,55 @@
 
 .settings-menu{
-    display:flex;
-    background-color:#b4c6bf;
-    position: fixed;
-    top:50px;
-    width: 440px;
-    margin: 0;
-    margin-top: -2px;
-    height:100%;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    flex-direction: column;
-    left: 50%;
-    transform: translateX( -50% );
+  display:flex;
+  background-color:#4B6A89;
+  position: fixed;
+  top:50px;
+  width: 440px;
+  margin: 0;
+  margin-top: -2px;
+  height:100%;
+  border: 1px solid #382A3E;;
+  z-index: 1000;
+  flex-direction: column;
+  left: 50%;
+  transform: translateX( -50% );
    
 }
 
+.settings-menu h1{
+  padding: auto;
+  text-align: center;
+  font-weight: 900;
+  color: #7BD6CB;
+}
+
 hr{
-    display: block;
+  display: block;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   margin-left: auto;
   margin-right: auto;
-  border-style: inset;
   border-width: 1px;
   width: 100%;
-
-}
-
-
-
-.sub-menu{
-    display: flex;
-    flex-direction: row;
-flex-wrap: wrap;
-}
-.sub-menu-section{
-    display: block;
-  width:100%;
+  border-color: black;
 }
 
 .title-submenu{
-    margin-left: 25px;
+  margin-left: 25px;
+}
+
+.sub-menu{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.sub-menu-section{
+  display: block;
+  width:100%;
+}
+
+.sub-menu-section h2{
+  margin-left: 15px;
 }
 
 span{
@@ -64,7 +71,7 @@ span{
     outline: 0;
     text-indent: 60px; 
     transition: all .3s ease-in-out;
-    background-color: #abbbbd;
+    background-color: #7BD6CB;
 
     
     &::-webkit-input-placeholder {

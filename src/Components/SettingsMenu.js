@@ -48,14 +48,14 @@ const TimeMenu = ({workMinutes, breakMinutes, handleBreakMinChange, handleWorkMi
                 <h1 className='title-submenu'>Time:</h1>
             </div>
             <div className='sub-menu-section'>
-                <h2>Focus Time:</h2>
+                <h2>Focus:</h2>
                 <span>
                     <input type='number'defaultValue={workMinutes} onChange={handleWorkMinChange} placeholder='Focus mode duration' className='balloon' min='1'/>
                     <label for="Minutes">Minutes</label>
                 </span>
             </div>
             <div className='sub-menu-section'>
-                <h2>Break Time:</h2>
+                <h2>Break:</h2>
                 <span>
                     <input type='number'defaultValue={breakMinutes} onChange={handleBreakMinChange} placeholder='Break mode duration' className='balloon' min='1'/>
                     <label for="Minutes">Minutes</label>

@@ -38,6 +38,15 @@
   border: 2px solid #7BD6CB;
 }
 
+.box.focus{
+  border-radius: 40px 0px 0px 40px;
+}
+.box.break{
+  border-radius: 0px 40px 40px 0px;
+}
+
+
+
 .box:active{
   transform: translateY(5px);
 }

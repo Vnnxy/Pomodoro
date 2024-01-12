@@ -29,11 +29,6 @@ const handleSettingsOpener = ()  =>{
   toogleSettingsOpen(!settingsOpen);
 }
 
-
-const changeMode = (event) =>{
-  setMode(event.target.value);
-}
-
 const settingProps = {
   settingsOpen:settingsOpen,
   workMinutes : workMinutes,
@@ -61,7 +56,7 @@ return (
       <NavMenu handleSettingsOpener= {handleSettingsOpener} ref={ref2}/>
       <SettingsMenu {...settingProps} ref={ref1}/>
       
-      <Timer min={currentTime} mode={currentMode} setMode={setMode} changeMode={changeMode}/>
+      <Timer min={currentTime} mode={currentMode} setMode={setMode}/>
   </div>
 );
 

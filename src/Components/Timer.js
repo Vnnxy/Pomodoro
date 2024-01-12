@@ -3,7 +3,7 @@ import ModeSelector from "./ModeSelector";
 
 import '../Styles/TimerStyles.css'
 
-const Timer = ({min, mode,setMode, changeMode}) =>{
+const Timer = ({min, mode,setMode}) =>{
     //The minutes that will change.
     var minutes = min;
     //The time that is displayed in the Timer
@@ -99,18 +99,25 @@ const Timer = ({min, mode,setMode, changeMode}) =>{
                     countdown(minutes-1, sec)             
                 }
                 else{
-                    console.log("Time is Up")
                     //setFinish(true);
-                    if(mode==="FOCUS")
+                    if(mode==="FOCUS"){
                         setMode("BREAK")
-                    else
+                        setBreakChecked(true);
+                        setFocusChecked(false);
+                    }
+                    else{
                         setMode("FOCUS")
+                        setBreakChecked(false);
+                        setFocusChecked(true);
+                    }
                     countdown(min, 60)
                 }
             }
         }
         tick()
         }
+    const [focusIsChecked, setFocusChecked] = useState(true);
+    const [breakIsChecked, setBreakChecked] = useState(false);
 
     /**
      * Button handler for pausing, starting and resuming. 
@@ -137,7 +144,7 @@ const Timer = ({min, mode,setMode, changeMode}) =>{
     return(
         <div className="main-container">
             <div className="mode-cont">
-                <ModeSelector changeMode={changeMode}/>
+                <ModeSelector setFocusChecked={setFocusChecked} setBreakChecked={setBreakChecked} focusIsChecked={focusIsChecked} breakIsChecked={breakIsChecked} setMode={setMode}/>
             </div>
             <div className="timer-container">
                 <div className="timestamp-cont">{time}</div>
