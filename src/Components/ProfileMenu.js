@@ -7,7 +7,7 @@ const ProfileMenu = () =>{
             <div className='sub-menu-section'>
                 <h2>Name:</h2>
                 <span>
-                    Name: Akira
+                   Akira
                 </span>
             </div>
             <div className='sub-menu-section'>
