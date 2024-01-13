@@ -63,7 +63,10 @@ const SettingsMenu = forwardRef(({settingsOpen, workMinutes, setWorkMinutes, bre
             </nav>
     
             </div>
-            <TimeMenu id="time-men" workMinutes={workMinutes} breakMinutes={breakMinutes} handleBreakMinChange={handleBreakMinChange} handleWorkMinChange={handleWorkMinChange}/>
+            <div className='settings-container'>
+                <TimeMenu id="time-men" workMinutes={workMinutes} breakMinutes={breakMinutes} handleBreakMinChange={handleBreakMinChange} handleWorkMinChange={handleWorkMinChange}/>
+            </div>
+            
         </div>
         
     )

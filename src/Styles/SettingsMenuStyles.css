@@ -43,6 +43,17 @@
   margin-top: 90px;
 }
 
+.settings-container{
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #5e7c9b;
+  width: 80%;
+  height: 500px;
+  border-radius: 40px;
+}
+
 .nav-item{
   width: 100%;
 }

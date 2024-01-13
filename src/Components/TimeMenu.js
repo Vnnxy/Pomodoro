@@ -3,7 +3,7 @@ import '../Styles/TimeMenuStyle.css'
 const TimeMenu = ({workMinutes, breakMinutes, handleBreakMinChange, handleWorkMinChange}) =>{
     
     return (
-        <div className='sub-menu'>
+        <div className='sub-cont'>
             <div>
                 <h1 className='title-submenu'>Timer Settings:</h1>
             </div>
