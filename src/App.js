@@ -10,11 +10,12 @@ const App = () =>{
 
 const storedFocusMin = JSON.parse(localStorage.getItem('focusTime'))
 const storedBreakMin = JSON.parse(localStorage.getItem('breakTime'))
+const storedPomodorosCounter = JSON.parse(localStorage.getItem('pomoCounter'))
 
 const [settingsOpen, toogleSettingsOpen] = useState(false);
 const [workMinutes, setWorkMinutes] = useState(localStorage.getItem('focusTime') ? storedFocusMin : 25); //We define the default state of the timer.
 const [breakMinutes, setBreakMinutes] = useState(localStorage.getItem('breakTime') ? storedBreakMin : 10); //We define the default state of the break time.
-const[completedPomodoros, setPomodoros] = useState(0);
+const[completedPomodoros, setPomodoros] = useState(localStorage.getItem('pomoCounter') ? storedPomodorosCounter : 0);
 const ref1= useRef();
 const ref2= useRef();
 const BREAK='BREAK';
@@ -57,6 +58,10 @@ useEffect(()=>{
   localStorage.setItem('breakTime', JSON.stringify(breakMinutes))
 },[workMinutes, breakMinutes])
 
+useEffect(()=>{
+  localStorage.setItem('pomoCounter',JSON.stringify(completedPomodoros))
+},[completedPomodoros])
+
 
 
 useEffect(()=>{
@@ -69,7 +74,7 @@ return (
       <NavMenu handleSettingsOpener= {handleSettingsOpener} ref={ref2}/>
       <SettingsMenu {...settingProps} ref={ref1}/>
       
-      <Timer min={currentTime} mode={currentMode} setMode={setMode}/>
+      <Timer min={currentTime} mode={currentMode} setMode={setMode} addPomodoros={addPomodoros}/>
   </div>
 );
 

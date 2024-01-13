@@ -3,7 +3,7 @@ import ModeSelector from "./ModeSelector";
 
 import '../Styles/TimerStyles.css'
 
-const Timer = ({min, mode,setMode}) =>{
+const Timer = ({min, mode,setMode, addPomodoros}) =>{
     //The minutes that will change.
     var minutes = min;
     //The time that is displayed in the Timer
@@ -99,8 +99,8 @@ const Timer = ({min, mode,setMode}) =>{
                     countdown(minutes-1, sec)             
                 }
                 else{
-                    //setFinish(true);
                     if(mode==="FOCUS"){
+                        addPomodoros();
                         setMode("BREAK")
                         setBreakChecked(true);
                         setFocusChecked(false);
