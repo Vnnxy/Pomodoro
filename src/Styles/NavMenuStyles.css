@@ -32,9 +32,8 @@
 }
 
 .nav-container a:hover{
-    color: whitesmoke;
-  box-shadow: 0 0 5px whitesmoke;
-  text-shadow: 0 0 5px whitesmoke;
+    color: #90f5ea;
+  text-shadow: 0 0 5px #90f5ea;
 }
 
 @keyframes ripple {

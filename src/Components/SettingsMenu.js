@@ -6,7 +6,7 @@ import ProfileMenu from './ProfileMenu';
 import PreferencesMenu from './PreferencesMenu';
 import InsightsMenu from './InsightsMenu';
 
-const SettingsMenu = forwardRef(({settingsOpen, workMinutes, setWorkMinutes, breakMinutes, setBreakMinutes},ref) =>{
+const SettingsMenu = forwardRef(({settingsOpen, workMinutes, setWorkMinutes, breakMinutes, setBreakMinutes, completedPomodoros},ref) =>{
     const [currentSetting, setSetting] = useState("Profile");
     var focusMin = workMinutes;
     var breakMin = breakMinutes;
@@ -30,6 +30,7 @@ const SettingsMenu = forwardRef(({settingsOpen, workMinutes, setWorkMinutes, bre
         setBreakMinutes(breakMin);
         setWorkMinutes(focusMin);
     }
+   
     useOnClickOutside(ref,ref, handleExitSettings)
     if (!settingsOpen) {
         return null; // Render nothing if settingsOpen is false
@@ -43,7 +44,7 @@ const SettingsMenu = forwardRef(({settingsOpen, workMinutes, setWorkMinutes, bre
             case "Profile": return <ProfileMenu/>
             case "Timer": return <TimeMenu id="time-men" workMinutes={workMinutes} breakMinutes={breakMinutes} handleBreakMinChange={handleBreakMinChange} handleWorkMinChange={handleWorkMinChange}/>
             case "Preferences": return <PreferencesMenu/>
-            case "Insights": return <InsightsMenu/>
+            case "Insights": return <InsightsMenu completedPomodoros={completedPomodoros}/>
             default: return <ProfileMenu/>
         }
     }

@@ -1,3 +1,5 @@
+import '../Styles/SettingsMainValues.css'
+
 const PreferencesMenu = () =>{
     return(
         <div className='sub-cont'>

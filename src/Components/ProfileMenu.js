@@ -1,3 +1,5 @@
+import '../Styles/SettingsMainValues.css'
+
 const ProfileMenu = () =>{
     return(
         <div className='sub-cont'>
@@ -11,7 +13,7 @@ const ProfileMenu = () =>{
                 </span>
             </div>
             <div className='sub-menu-section'>
-                <h2>Email</h2>
+                <h2>Email:</h2>
                 <span>
                     akiralopea@di.com
                 </span>

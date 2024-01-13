@@ -1,4 +1,5 @@
 import '../Styles/TimeMenuStyle.css'
+import '../Styles/SettingsMainValues.css'
 //Menu containing the Time settings menu
 const TimeMenu = ({workMinutes, breakMinutes, handleBreakMinChange, handleWorkMinChange}) =>{
     

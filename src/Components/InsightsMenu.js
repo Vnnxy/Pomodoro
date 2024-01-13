@@ -1,4 +1,6 @@
-const InsightsMenu = () =>{
+import '../Styles/SettingsMainValues.css'
+
+const InsightsMenu = ({completedPomodoros}) =>{
     return(
         <div className='sub-cont'>
             <div>
@@ -7,7 +9,7 @@ const InsightsMenu = () =>{
             <div className='sub-menu-section'>
                 <h2>Completed Pomodoros:</h2>
                 <span>
-                    Number 0
+                    {completedPomodoros}
                 </span>
             </div>
             <div className='sub-menu-section'>

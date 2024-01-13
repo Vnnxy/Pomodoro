@@ -8,8 +8,7 @@ const NavMenu = forwardRef(({handleSettingsOpener}, ref) =>{
             <i class="fa-solid fa-seedling fa-3x"></i>
         </div>
         <nav>
-            <a href="#settings-menu" onClick={handleSettingsOpener}>Settings</a>
-            <a href="#">About</a>
+            <a href="#settings-menu" onClick={handleSettingsOpener}><i class="fa-solid fa-bars"></i></a>
         </nav>
     </div>
     )
