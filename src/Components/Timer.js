@@ -1,6 +1,5 @@
 import {useRef, useState, useEffect } from "react";
 import ModeSelector from "./ModeSelector";
-
 import '../Styles/TimerStyles.css'
 
 const Timer = ({min, mode,setMode, addPomodoros}) =>{
@@ -99,6 +98,7 @@ const Timer = ({min, mode,setMode, addPomodoros}) =>{
                     countdown(minutes-1, sec)             
                 }
                 else{
+                    audioTimeout.play();
                     if(mode==="FOCUS"){
                         addPomodoros();
                         setMode("BREAK")
@@ -119,11 +119,14 @@ const Timer = ({min, mode,setMode, addPomodoros}) =>{
     const [focusIsChecked, setFocusChecked] = useState(true);
     const [breakIsChecked, setBreakChecked] = useState(false);
 
+    let audioButton = new Audio('/sounds/button.wav');
+    let audioTimeout = new Audio('/sounds/bell2.mp3');
+
     /**
      * Button handler for pausing, starting and resuming. 
      */
     function handlePauseResume(){
-        
+        audioButton.play();
         //This blocks the button so it can't restart the timer
         if(!hasStarted){
             countdown(min, seconds);

@@ -15,7 +15,7 @@ const PreferencesMenu = () =>{
             <div className='sub-menu-section'>
                 <h2>Sounds:</h2>
                 <span>
-                   sound
+                   
                 </span>
             </div>
         </div>
