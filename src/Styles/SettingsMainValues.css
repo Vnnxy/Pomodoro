@@ -1,0 +1,24 @@
+.sub-cont{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .sub-menu-section{
+    display: flex;
+    width:100%;
+    margin-left: 40px;
+  }
+
+  .sub-menu-section h2{
+    font-weight: 900;
+    margin-left: 15px;
+    color: #7BD6CB;
+  }
+
+  .sub-menu-section span{
+    margin: 20px 20px;
+    font-weight: 900;
+    color: #7BD6CB;
+    font-size: 22px;
+}

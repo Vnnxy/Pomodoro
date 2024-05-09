@@ -1,0 +1,107 @@
+
+.settings-menu{
+  display:flex;
+  background-color:#4B6A89;
+  position: fixed;
+  top:130px;
+  width: 80%;
+  margin: 0;
+  margin-top: -2px;
+  height:550px;
+  z-index: 1000;
+  flex-direction: row;
+  left: 50%;
+  border-radius: 40px;
+  transform: translateX( -50% );
+  min-width: 400px;
+  
+}
+
+.settings-menu h1{
+  padding: auto;
+  margin-left: 40px;
+  text-align: left;
+  font-weight: 900;
+  color: #7BD6CB;
+}
+
+.options{
+  background-color: #4B6A89;
+  float: left;
+  width: 250px;
+  height:550px;
+  border-radius: 40px 0 0 40px;
+}
+
+.navbar-nav{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  margin-top: 90px;
+}
+
+.settings-container{
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #5e7c9b;
+  width: 80%;
+  height: 500px;
+  border-radius: 40px;
+  margin-right: 20px;
+}
+
+.nav-item{
+  width: 100%;
+}
+
+.nav-ref{
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  height: 5rem;
+  text-decoration: none;
+  margin-left: 5px;
+  color: #7BD6CB;
+  font-weight: 900;
+}
+
+.nav-ref input{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.settingsName-menu{
+  width: 240px;
+  padding-left: 20px;
+  border-radius: 20px 0 0 20px;
+  height: 4rem;
+  position: absolute;
+}
+
+.nav-ref input:checked + .settingsName-menu{
+  background-color: #5e7c9b;
+}
+
+.text-ref{
+  position: relative;
+    display: inline-block;
+    margin: 20px 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

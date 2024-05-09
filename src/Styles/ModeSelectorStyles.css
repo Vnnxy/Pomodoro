@@ -1,0 +1,80 @@
+/* This radio-button style is from https://codepen.io/gabrielferreira/pen/oYxNVy. made by Gabriel Ferreira*/
+.mode-wrapper{
+  text-align: center;
+  margin-top: 60px;
+}
+
+.mode-wrapper input[type="radio"]{
+  position: fixed;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mode-wrapper input:checked + .box {
+  background-color: #7BD6CB;
+}
+
+.mode-wrapper input:checked + .box span {
+  color: #4B6A89;
+  transform: translateY(12px);
+}
+
+.mode-wrapper input:checked + .box span:before {
+  transform: translateY(-4px);
+  opacity: 1;
+}
+
+.box{
+  width: 200px;
+  height: 100px;
+  background-color: #4B6A89;
+  transition: all 250ms ease;
+  will-change: transition;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  font-weight: 900;
+  border: 2px solid #7BD6CB;
+}
+
+.box.focus{
+  border-radius: 40px 0px 0px 40px;
+}
+.box.break{
+  border-radius: 0px 40px 40px 0px;
+}
+
+
+
+.box:active{
+  transform: translateY(5px);
+}
+.box span{
+  position: absolute;
+  transform: translate(0, 4px);
+  left: 0;
+  right: 0;
+  transition: all 300ms ease;
+  font-size: 1.5em;
+  user-select: none;
+  color: #7BD6CB;
+}
+.box span:before{
+  font-size: 1.2em;
+  display: block;
+  transform: translateY(-40px);
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+  font-weight: normal;
+  color: #4B6A89;
+  font-family: FontAwesome;
+}
+
+.focus span:before{
+  content: "\f6a7";
+}
+
+.break > span::before{
+  content: "\f7b6"
+}
