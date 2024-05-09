@@ -1,0 +1,30 @@
+.sound-cont{
+    display: flex;
+    height: 90px;
+    width: 40px;
+    align-items: center;
+    margin-left: 30px;
+    margin-top: 0;
+}
+
+.sound-input{
+   display: none;
+}
+
+.muted{
+    display: none;
+}
+
+.sound-input:checked + .switch-sound .muted {
+    display: block;
+}
+
+.sound-input:checked + .switch-sound .unmuted {
+    display: none;
+}
+
+.switch-sound{
+    color: #7BD6CB;
+    padding-bottom: 20px;
+
+}

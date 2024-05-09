@@ -1,6 +1,15 @@
 import '../Styles/TimeMenuStyle.css'
 import '../Styles/SettingsMainValues.css'
-//Menu containing the Time settings menu
+
+
+/**
+ * Component for the timer settings.
+ * 
+ * @param {*} workMinutes the minutes the timer will have in focus mode
+ * @param {*} breakMinutes the minutes the timer will have in break mode
+ * @param {*} handleBreakMinChange action that detects when the timer on break changes
+ * @param {*} handleWorkMinChange action that detects when the timer on focus changes
+ */
 const TimeMenu = ({workMinutes, breakMinutes, handleBreakMinChange, handleWorkMinChange}) =>{
     
     return (

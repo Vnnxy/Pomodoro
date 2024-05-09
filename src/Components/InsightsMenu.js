@@ -1,5 +1,8 @@
 import '../Styles/SettingsMainValues.css'
 
+/**
+ * Menu for the insights accesed by settings. This will give the number of pomodoros and the trends.
+ */
 const InsightsMenu = ({completedPomodoros}) =>{
     return(
         <div className='sub-cont'>
@@ -10,12 +13,6 @@ const InsightsMenu = ({completedPomodoros}) =>{
                 <h2>Completed Pomodoros:</h2>
                 <span>
                     {completedPomodoros}
-                </span>
-            </div>
-            <div className='sub-menu-section'>
-                <h2>Trends:</h2>
-                <span>
-                    1 week
                 </span>
             </div>
         </div>

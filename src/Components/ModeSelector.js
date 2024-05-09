@@ -1,5 +1,14 @@
 import '../Styles/ModeSelectorStyles.css'
 
+/**
+ * This components is in charge of changing between break mode and focus mode
+ * @param {*} focusIsChecked is a boolean to check whether the user selected the break icon
+ * @param {*} breakIsChecked a boolean to check whether the user selected the focus icon
+ * @param {*} setBreakChecked is a setter for the breakIsChecked
+ * @param {*} setFocusChecked is a setter for the focusIsChecked
+ * @param {*} setMode is a setter for the currentMode
+ * 
+ */
 const ModeSelector = ({setBreakChecked, setFocusChecked, focusIsChecked, breakIsChecked, setMode}) =>{
 
     const handleModeAndCheck = (event) =>{

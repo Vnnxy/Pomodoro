@@ -1,6 +1,9 @@
 import { forwardRef } from 'react'
 import '../Styles/NavMenuStyles.css'
 
+/**
+ * Component for the Navigation Menu on the top of the page.
+ */
 const NavMenu = forwardRef(({handleSettingsOpener}, ref) =>{
     return(
     <div className="nav-container" ref={ref}>

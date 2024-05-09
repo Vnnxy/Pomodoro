@@ -2,7 +2,11 @@ import {useRef, useState, useEffect } from "react";
 import ModeSelector from "./ModeSelector";
 import '../Styles/TimerStyles.css'
 
-const Timer = ({min, mode,setMode, addPomodoros}) =>{
+/**
+ * Component for the timer in the main page.
+ * This receives the time and mode from the setting component to display it.
+ */
+const Timer = ({min, mode,setMode, addPomodoros, audioButton, audioTimeout}) =>{
     //The minutes that will change.
     var minutes = min;
     //The time that is displayed in the Timer
@@ -119,8 +123,7 @@ const Timer = ({min, mode,setMode, addPomodoros}) =>{
     const [focusIsChecked, setFocusChecked] = useState(true);
     const [breakIsChecked, setBreakChecked] = useState(false);
 
-    let audioButton = new Audio('/sounds/button.wav');
-    let audioTimeout = new Audio('/sounds/bell2.mp3');
+    
 
     /**
      * Button handler for pausing, starting and resuming. 
